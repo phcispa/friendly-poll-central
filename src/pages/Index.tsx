@@ -1,16 +1,19 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Users, Vote, BarChart3, Shield } from "lucide-react";
 import LoginForm from "@/components/auth/LoginForm";
 import AdminDashboard from "@/components/admin/AdminDashboard";
 import UserDashboard from "@/components/user/UserDashboard";
 
+type User = {
+  id: string;
+  email: string;
+  role: 'admin' | 'user';
+};
+
 const Index = () => {
-  const [currentUser, setCurrentUser] = useState<{ id: string; email: string; role: 'admin' | 'user' } | null>(null);
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [showLogin, setShowLogin] = useState(false);
 
   const handleLogin = (email: string, password: string) => {
