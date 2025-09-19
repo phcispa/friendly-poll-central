@@ -33,8 +33,8 @@ const Index = () => {
 
   if (currentUser) {
     return currentUser.role === 'admin' ? 
-      <AdminDashboard user={currentUser} onLogout={handleLogout} /> :
-      <UserDashboard user={currentUser} onLogout={handleLogout} />;
+      <AdminDashboard user={currentUser as { id: string; email: string; role: 'admin' }} onLogout={handleLogout} /> :
+      <UserDashboard user={currentUser as { id: string; email: string; role: 'user' }} onLogout={handleLogout} />;
   }
 
   if (showLogin) {
@@ -120,7 +120,7 @@ const Index = () => {
               <CardTitle className="text-xl text-gray-900">Secure & Private</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-gray-600">Your data is protected with enterprise-grade security and privacy measures.</p>
+              <p className="text-gray-600">Your data is protected with enterprise-grade security and privacy measures. ISO 27001 certified security ensures the highest standards of data protection.</p>
             </CardContent>
           </Card>
         </div>
